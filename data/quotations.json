@@ -1,0 +1,8 @@
+{
+  "updated_at": "1970-01-01T00:00:00+00:00",
+  "source": "placeholder - in attesa del primo run di fetch_quotations.py",
+  "columns": ["data", "mercato", "bilanciata", "obbligazionaria", "italia"],
+  "offsets": {"obbligazionaria": -0.28},
+  "count": 0,
+  "rows": []
+}
