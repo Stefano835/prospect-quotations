@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-21T14:50:35+00:00",
+  "updated_at": "2026-09-22T13:06:34+00:00",
   "source": "Yahoo Finance via yfinance",
   "columns": [
     "data",
@@ -11,17 +11,10 @@
   "offsets": {
     "obbligazionaria": -0.28
   },
-  "count": 312,
-  "first_date": "2020-09-21",
+  "count": 311,
+  "first_date": "2020-09-28",
   "last_date": "2026-09-14",
   "rows": [
-    [
-      "2020-09-21",
-      15.458,
-      11.931,
-      15.04,
-      7.995
-    ],
     [
       "2020-09-28",
       15.494,
