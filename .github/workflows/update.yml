@@ -25,11 +25,14 @@ jobs:
       - name: Run fetch_quotations.py
         run: python fetch_quotations.py
 
+      - name: Run fetch_teseo.py
+        run: python fetch_teseo.py
+
       - name: Commit & push if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/quotations.json
+          git add data/quotations.json data/teseo.json
           if git diff --staged --quiet; then
             echo "Nessuna nuova quotazione, niente da committare."
           else
