@@ -1,7 +1,7 @@
 """
 fetch_quotations.py
 ─────────────────────
-Scarica le quotazioni settimanali delle 4 linee unit linked di Reale Mutua
+Scarica le quotazioni settimanali delle 6 linee unit linked di Reale Mutua
 (Dual Plus Premio Unico) da Yahoo Finance e produce data/quotations.json
 nel formato consumato dal simulatore Prospect.
 
@@ -31,6 +31,8 @@ LINEE = [
     ('0P00017ICV.F',    'Bilanciata Attiva', 0.0),
     ('0P00017ICX.F',    'Obbligazionaria',  -0.28),  # offset empirico
     ('0P00017ICR.F',    'Impresa Italia',    0.0),
+    ('0P00017ICN.F',    'Linea Futuro',      0.0),
+    ('0P00017ICL.F',    'Linea Equilibrio',  0.0),
 ]
 
 # Quanti anni di storico scaricare (più che sufficienti per il simulatore,
@@ -76,14 +78,14 @@ def main() -> int:
             print(f"  {nome:22s} → ERRORE: {e}", file=sys.stderr)
             return 1
 
-    # Allineo per data: tengo solo le date presenti in tutte e 4 le serie
+    # Allineo per data: tengo solo le date presenti in tutte le serie
     date_comuni = set(serie_per_linea[0].index)
     for s in serie_per_linea[1:]:
         date_comuni &= set(s.index)
     date_ordinate = sorted(date_comuni)
 
     if not date_ordinate:
-        print("ERRORE: nessuna data comune fra le 4 serie", file=sys.stderr)
+        print("ERRORE: nessuna data comune fra le serie", file=sys.stderr)
         return 1
 
     rows = []
@@ -94,7 +96,7 @@ def main() -> int:
     payload = {
         'updated_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
         'source': 'Yahoo Finance via yfinance',
-        'columns': ['data', 'mercato', 'bilanciata', 'obbligazionaria', 'italia'],
+        'columns': ['data', 'mercato', 'bilanciata', 'obbligazionaria', 'italia', 'futuro', 'equilibrio'],
         'offsets': {'obbligazionaria': -0.28},
         'count': len(rows),
         'first_date': rows[0][0],
