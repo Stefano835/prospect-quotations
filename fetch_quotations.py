@@ -31,8 +31,8 @@ LINEE = [
     ('0P00017ICV.F',    'Bilanciata Attiva', 0.0),
     ('0P00017ICX.F',    'Obbligazionaria',  -0.28),  # offset empirico
     ('0P00017ICR.F',    'Impresa Italia',    0.0),
-    ('0P00017ICN.F',    'Linea Futuro',      0.0),
-    ('0P00017ICL.F',    'Linea Equilibrio',  0.0),
+    ('0P00017ICN.F',    'Linea Futuro',      0.28),  # offset empirico vs NAV reale
+    ('0P00017ICL.F',    'Linea Equilibrio', -0.12),  # offset empirico vs NAV reale
 ]
 
 # Quanti anni di storico scaricare (più che sufficienti per il simulatore,
@@ -97,7 +97,7 @@ def main() -> int:
         'updated_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
         'source': 'Yahoo Finance via yfinance',
         'columns': ['data', 'mercato', 'bilanciata', 'obbligazionaria', 'italia', 'futuro', 'equilibrio'],
-        'offsets': {'obbligazionaria': -0.28},
+        'offsets': {'obbligazionaria': -0.28, 'futuro': 0.28, 'equilibrio': -0.12},
         'count': len(rows),
         'first_date': rows[0][0],
         'last_date': rows[-1][0],
