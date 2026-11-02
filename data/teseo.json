@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27T13:57:46+00:00",
+  "updated_at": "2026-11-02T17:48:29+00:00",
   "source": "Yahoo Finance via yfinance",
   "frequency": "monthly",
   "columns": [
@@ -9,16 +9,10 @@
     "teseo_svil"
   ],
   "offsets": {},
-  "count": 54,
-  "first_date": "2021-11-01",
+  "count": 53,
+  "first_date": "2021-12-01",
   "last_date": "2026-09-01",
   "rows": [
-    [
-      "2021-11-01",
-      14.9297,
-      19.3568,
-      12.3181
-    ],
     [
       "2021-12-01",
       14.42,
