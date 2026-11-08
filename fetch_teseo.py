@@ -36,9 +36,9 @@ import yfinance as yf
 # suffisso, oppure verifica il simbolo esatto sulla pagina Yahoo del fondo.
 LINEE = [
     # (ticker yahoo,       nome,                 offset di calibrazione)
-    ('0P0000G35M.F',       'Teseo Garantita',     0.0),
-    ('0P0000G35O.F',       'Teseo Bilanciata',    0.0),
-    ('0P0000G35P.F',       'Teseo Sviluppo',      0.0),
+    ('0P0000G35M.F',       'Teseo Garantita',    -0.48),  # offset empirico vs NAV reale
+    ('0P0000G35O.F',       'Teseo Bilanciata',   -0.49),  # offset empirico vs NAV reale
+    ('0P0000G35P.F',       'Teseo Sviluppo',     +1.33),  # offset empirico vs NAV reale
 ]
 
 # Bastano pochi anni: lo storico profondo (dal 2000/2007) e' gia' nel
@@ -104,7 +104,7 @@ def main() -> int:
         'source': 'Yahoo Finance via yfinance',
         'frequency': 'monthly',
         'columns': ['data', 'teseo_gar', 'teseo_bil', 'teseo_svil'],
-        'offsets': {},
+        'offsets': {'teseo_gar': -0.48, 'teseo_bil': -0.49, 'teseo_svil': 1.33},
         'count': len(rows),
         'first_date': rows[0][0],
         'last_date': rows[-1][0],
